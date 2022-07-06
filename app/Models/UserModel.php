@@ -21,7 +21,7 @@ class UserModel extends Model
     // Mendapatkan user tertentu berdasarkan kolom tertentu
     public function getSpesificUser($column = 'username', $value = '')
     {
-        return $this->db->query("SELECT * FROM pengguna WHERE {$column}='{$value}';")->getFirstRow();
+        return $this->db->query("SELECT * FROM pengguna WHERE {$column}='{$value}'")->getFirstRow();
     }
 
     // Mendapatkan user tertentu berdasarkan kolom tertentu ( user anak didik )
