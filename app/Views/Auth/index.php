@@ -20,7 +20,7 @@
     <div class="halaman-login  d-flex justify-content-between">
         <img src="<?= base_url('assets/img/logo.jpg'); ?>" alt="">
         <form action="<?= base_url('Auth/AuthProcess'); ?>" method="POST" class="halaman-login-container m-auto  border-start p-4">
-            <?= csrf_field(); ?>
+
 
             <div class="title text-center mb-4">
                 <h4 class="text-danger">Login Page</h4>
