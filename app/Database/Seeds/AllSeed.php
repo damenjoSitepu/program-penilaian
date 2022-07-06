@@ -9,7 +9,7 @@ class AllSeed extends Seeder
     public function run()
     {
         $this->call('LevelSeed');
-        $this->call('UserSeed');
+        $this->call('PenggunaSeed');
         // $this->call('MotivatorSeed');
         // $this->call('AnakDidikSeed');
         $this->call('HariSeed');

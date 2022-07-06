@@ -28,7 +28,7 @@ class Absensi extends Migration
         ]);
 
         $this->forge->addKey('absen_id', true);
-        $this->forge->addForeignKey('user_id', 'user', 'user_id');
+        $this->forge->addForeignKey('user_id', 'pengguna', 'user_id');
         $this->forge->addForeignKey('status_id', 'status', 'status_id');
         $this->forge->createTable('absensi');
     }

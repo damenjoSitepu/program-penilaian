@@ -9,13 +9,13 @@ class AbsensiModel extends Model
     // Mendapatkan data absensi
     public function getAbsensi()
     {
-        return $this->db->query("SELECT * FROM absensi INNER JOIN user ON absensi.user_id = user.user_id INNER JOIN anak_didik ON user.user_id = anak_didik.user_id ORDER BY tanggal_absen DESC")->getResultArray();
+        return $this->db->query("SELECT * FROM absensi INNER JOIN pengguna ON absensi.user_id = pengguna.user_id INNER JOIN anak_didik ON pengguna.user_id = anak_didik.user_id ORDER BY tanggal_absen DESC")->getResultArray();
     }
 
     // Mendapatkan Data Absensi Berdasarkan Pencarian Tanggal
     public function searchAbsensi($range_tangal)
     {
-        return $this->db->query("SELECT * FROM absensi INNER JOIN user ON absensi.user_id = user.user_id INNER JOIN anak_didik ON user.user_id = anak_didik.user_id WHERE (absensi.tanggal_absen BETWEEN '{$range_tangal}' AND CURRENT_DATE()) ORDER BY tanggal_absen DESC")->getResultArray();
+        return $this->db->query("SELECT * FROM absensi INNER JOIN pengguna ON absensi.user_id = pengguna.user_id INNER JOIN anak_didik ON pengguna.user_id = anak_didik.user_id WHERE (absensi.tanggal_absen BETWEEN '{$range_tangal}' AND CURRENT_DATE) ORDER BY tanggal_absen DESC")->getResultArray();
     }
 
     // Mendapatkan data absensi spesifik
@@ -33,7 +33,7 @@ class AbsensiModel extends Model
     // Mendapatkan data absensi spesifik berdasarkan user dan pencarian tanggal
     public function searchAbsensiSpesificByUser($user_id, $search)
     {
-        return $this->db->query("SELECT * FROM absensi INNER JOIN status ON absensi.status_id = status.status_id WHERE absensi.user_id='{$user_id}' AND absensi.tanggal_absen BETWEEN '{$search}' AND CURRENT_DATE() ORDER BY absensi.tanggal_absen ASC")->getResultArray();
+        return $this->db->query("SELECT * FROM absensi INNER JOIN status ON absensi.status_id = status.status_id WHERE absensi.user_id='{$user_id}' AND absensi.tanggal_absen BETWEEN '{$search}' AND CURRENT_DATE ORDER BY absensi.tanggal_absen ASC")->getResultArray();
     }
 
     // Mendapatkan data status

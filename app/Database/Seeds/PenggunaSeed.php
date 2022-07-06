@@ -4,13 +4,12 @@ namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
 
-class UserSeed extends Seeder
+class PenggunaSeed extends Seeder
 {
     public function run()
     {
         $data = [
             [
-                'user_id'   => '1',
                 'nama'      => 'Intan',
                 'username'  => 'intan',
                 'password'  => '123',
@@ -42,6 +41,6 @@ class UserSeed extends Seeder
         // }
 
         // Using Query Builder
-        $this->db->table('user')->insertBatch($data);
+        $this->db->table('pengguna')->insertBatch($data);
     }
 }

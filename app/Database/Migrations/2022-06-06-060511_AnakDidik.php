@@ -59,7 +59,7 @@ class AnakDidik extends Migration
                 'default'    => 'default'
             ],
         ]);
-        $this->forge->addForeignKey('user_id', 'user', 'user_id');
+        $this->forge->addForeignKey('user_id', 'pengguna', 'user_id');
         $this->forge->addForeignKey('level_id', 'level', 'level_id');
         $this->forge->createTable('anak_didik');
     }

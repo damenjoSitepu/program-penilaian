@@ -24,7 +24,7 @@ class NilaiDetail extends Migration
         ]);
 
         $this->forge->addForeignKey('nilai_id', 'nilai', 'nilai_id');
-        $this->forge->addForeignKey('user_id', 'user', 'user_id');
+        $this->forge->addForeignKey('user_id', 'pengguna', 'user_id');
         $this->forge->addForeignKey('skor_id', 'skor', 'skor_id');
         $this->forge->createTable('nilai_detail');
     }

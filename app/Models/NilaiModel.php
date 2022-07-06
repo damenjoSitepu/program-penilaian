@@ -10,18 +10,18 @@ class NilaiModel extends Model
     public function getNilai($user = 'admin', $motivator_id = '')
     {
         if ($user === 'admin')
-            return $this->db->query("SELECT *, usermotivator.nama as nama_motivator, nilai.nilai_id as nilai_id_real FROM nilai LEFT JOIN nilai_detail ON nilai.nilai_id = nilai_detail.nilai_id INNER JOIN jadwal ON nilai.jadwal_id = jadwal.jadwal_id INNER JOIN level ON jadwal.level_id = level.level_id INNER JOIN kategori_nilai ON nilai.kategori_nilai_id = kategori_nilai.kategori_nilai_id INNER JOIN hari ON jadwal.hari_id = hari.hari_id INNER JOIN user AS usermotivator ON nilai.user_id = usermotivator.user_id LEFT JOIN user AS userdetail ON nilai_detail.user_id = userdetail.user_id ORDER BY level.level_id ASC")->getResultArray();
+            return $this->db->query("SELECT *, usermotivator.nama as nama_motivator, nilai.nilai_id as nilai_id_real FROM nilai LEFT JOIN nilai_detail ON nilai.nilai_id = nilai_detail.nilai_id INNER JOIN jadwal ON nilai.jadwal_id = jadwal.jadwal_id INNER JOIN level ON jadwal.level_id = level.level_id INNER JOIN kategori_nilai ON nilai.kategori_nilai_id = kategori_nilai.kategori_nilai_id INNER JOIN hari ON jadwal.hari_id = hari.hari_id INNER JOIN pengguna AS usermotivator ON nilai.user_id = usermotivator.user_id LEFT JOIN pengguna AS userdetail ON nilai_detail.user_id = userdetail.user_id ORDER BY level.level_id ASC")->getResultArray();
         else
-            return $this->db->query("SELECT *, usermotivator.nama as nama_motivator, nilai.nilai_id as nilai_id_real FROM nilai LEFT JOIN nilai_detail ON nilai.nilai_id = nilai_detail.nilai_id INNER JOIN jadwal ON nilai.jadwal_id = jadwal.jadwal_id INNER JOIN level ON jadwal.level_id = level.level_id INNER JOIN kategori_nilai ON nilai.kategori_nilai_id = kategori_nilai.kategori_nilai_id INNER JOIN hari ON jadwal.hari_id = hari.hari_id INNER JOIN user AS usermotivator ON nilai.user_id = usermotivator.user_id LEFT JOIN user AS userdetail ON nilai_detail.user_id = userdetail.user_id WHERE usermotivator.user_id='{$motivator_id}' ORDER BY level.level_id ASC")->getResultArray();
+            return $this->db->query("SELECT *, usermotivator.nama as nama_motivator, nilai.nilai_id as nilai_id_real FROM nilai LEFT JOIN nilai_detail ON nilai.nilai_id = nilai_detail.nilai_id INNER JOIN jadwal ON nilai.jadwal_id = jadwal.jadwal_id INNER JOIN level ON jadwal.level_id = level.level_id INNER JOIN kategori_nilai ON nilai.kategori_nilai_id = kategori_nilai.kategori_nilai_id INNER JOIN hari ON jadwal.hari_id = hari.hari_id INNER JOIN pengguna AS usermotivator ON nilai.user_id = usermotivator.user_id LEFT JOIN pengguna AS userdetail ON nilai_detail.user_id = userdetail.user_id WHERE usermotivator.user_id='{$motivator_id}' ORDER BY level.level_id ASC")->getResultArray();
     }
 
     // Mendapatkan Data Nilai Berdasarkan Pencarian Tanggal
     public function searchNilai($range_tangal, $user = 'admin', $motivator_id = '')
     {
         if ($user === 'admin')
-            return $this->db->query("SELECT *, usermotivator.nama as nama_motivator, nilai.nilai_id as nilai_id_real FROM nilai LEFT JOIN nilai_detail ON nilai.nilai_id = nilai_detail.nilai_id INNER JOIN jadwal ON nilai.jadwal_id = jadwal.jadwal_id INNER JOIN level ON jadwal.level_id = level.level_id INNER JOIN kategori_nilai ON nilai.kategori_nilai_id = kategori_nilai.kategori_nilai_id INNER JOIN hari ON jadwal.hari_id = hari.hari_id INNER JOIN user AS usermotivator ON nilai.user_id = usermotivator.user_id LEFT JOIN user AS userdetail ON nilai_detail.user_id = userdetail.user_id WHERE ( nilai.tanggal_penilaian BETWEEN '{$range_tangal}' AND CURRENT_DATE()) ORDER BY level.level_id ASC")->getResultArray();
+            return $this->db->query("SELECT *, usermotivator.nama as nama_motivator, nilai.nilai_id as nilai_id_real FROM nilai LEFT JOIN nilai_detail ON nilai.nilai_id = nilai_detail.nilai_id INNER JOIN jadwal ON nilai.jadwal_id = jadwal.jadwal_id INNER JOIN level ON jadwal.level_id = level.level_id INNER JOIN kategori_nilai ON nilai.kategori_nilai_id = kategori_nilai.kategori_nilai_id INNER JOIN hari ON jadwal.hari_id = hari.hari_id INNER JOIN pengguna AS usermotivator ON nilai.user_id = usermotivator.user_id LEFT JOIN pengguna AS userdetail ON nilai_detail.user_id = userdetail.user_id WHERE ( nilai.tanggal_penilaian BETWEEN '{$range_tangal}' AND CURRENT_DATE) ORDER BY level.level_id ASC")->getResultArray();
         else
-            return $this->db->query("SELECT *, usermotivator.nama as nama_motivator, nilai.nilai_id as nilai_id_real FROM nilai LEFT JOIN nilai_detail ON nilai.nilai_id = nilai_detail.nilai_id INNER JOIN jadwal ON nilai.jadwal_id = jadwal.jadwal_id INNER JOIN level ON jadwal.level_id = level.level_id INNER JOIN kategori_nilai ON nilai.kategori_nilai_id = kategori_nilai.kategori_nilai_id INNER JOIN hari ON jadwal.hari_id = hari.hari_id INNER JOIN user AS usermotivator ON nilai.user_id = usermotivator.user_id LEFT JOIN user AS userdetail ON nilai_detail.user_id = userdetail.user_id WHERE usermotivator.user_id='{$motivator_id}' AND ( nilai.tanggal_penilaian BETWEEN '{$range_tangal}' AND CURRENT_DATE()) ORDER BY level.level_id ASC")->getResultArray();
+            return $this->db->query("SELECT *, usermotivator.nama as nama_motivator, nilai.nilai_id as nilai_id_real FROM nilai LEFT JOIN nilai_detail ON nilai.nilai_id = nilai_detail.nilai_id INNER JOIN jadwal ON nilai.jadwal_id = jadwal.jadwal_id INNER JOIN level ON jadwal.level_id = level.level_id INNER JOIN kategori_nilai ON nilai.kategori_nilai_id = kategori_nilai.kategori_nilai_id INNER JOIN hari ON jadwal.hari_id = hari.hari_id INNER JOIN pengguna AS usermotivator ON nilai.user_id = usermotivator.user_id LEFT JOIN pengguna AS userdetail ON nilai_detail.user_id = userdetail.user_id WHERE usermotivator.user_id='{$motivator_id}' AND ( nilai.tanggal_penilaian BETWEEN '{$range_tangal}' AND CURRENT_DATE) ORDER BY level.level_id ASC")->getResultArray();
     }
 
     // Mendapatkan Data Nilai dan data nilai detail berdasarkan jadwal id
@@ -40,12 +40,12 @@ class NilaiModel extends Model
     public function getSpesificNilaiByKategori($kategoriName = 'tugas', $user_id = false)
     {
         if (!$user_id) {
-            return $this->db->query("SELECT * FROM nilai_detail INNER JOIN nilai ON nilai_detail.nilai_id = nilai.nilai_id INNER JOIN jadwal ON nilai.jadwal_id = jadwal.jadwal_id INNER JOIN level ON jadwal.level_id = level.level_id INNER JOIN user ON nilai.user_id = user.user_id WHERE nilai_detail.user_id={$user_id} ORDER BY nilai.tanggal_penilaian ASC")->getResultArray();
+            return $this->db->query("SELECT * FROM nilai_detail INNER JOIN nilai ON nilai_detail.nilai_id = nilai.nilai_id INNER JOIN jadwal ON nilai.jadwal_id = jadwal.jadwal_id INNER JOIN level ON jadwal.level_id = level.level_id INNER JOIN pengguna ON nilai.user_id = pengguna.user_id WHERE nilai_detail.user_id={$user_id} ORDER BY nilai.tanggal_penilaian ASC")->getResultArray();
         } else {
             if ($kategoriName === 'tugas') {
-                return $this->db->query("SELECT * FROM nilai_detail INNER JOIN nilai ON nilai_detail.nilai_id = nilai.nilai_id INNER JOIN jadwal ON nilai.jadwal_id = jadwal.jadwal_id INNER JOIN level ON jadwal.level_id = level.level_id INNER JOIN kategori_nilai ON nilai.kategori_nilai_id = kategori_nilai.kategori_nilai_id INNER JOIN user ON nilai.user_id = user.user_id WHERE nilai_detail.user_id={$user_id} AND kategori_nilai.kategori_nilai_id=1 ORDER BY nilai.tanggal_penilaian ASC")->getResultArray();
+                return $this->db->query("SELECT * FROM nilai_detail INNER JOIN nilai ON nilai_detail.nilai_id = nilai.nilai_id INNER JOIN jadwal ON nilai.jadwal_id = jadwal.jadwal_id INNER JOIN level ON jadwal.level_id = level.level_id INNER JOIN kategori_nilai ON nilai.kategori_nilai_id = kategori_nilai.kategori_nilai_id INNER JOIN pengguna ON nilai.user_id = pengguna.user_id WHERE nilai_detail.user_id={$user_id} AND kategori_nilai.kategori_nilai_id=1 ORDER BY nilai.tanggal_penilaian ASC")->getResultArray();
             } else {
-                return $this->db->query("SELECT * FROM nilai_detail INNER JOIN nilai ON nilai_detail.nilai_id = nilai.nilai_id INNER JOIN jadwal ON nilai.jadwal_id = jadwal.jadwal_id INNER JOIN level ON jadwal.level_id = level.level_id INNER JOIN kategori_nilai ON nilai.kategori_nilai_id = kategori_nilai.kategori_nilai_id INNER JOIN user ON nilai.user_id = user.user_id WHERE nilai_detail.user_id={$user_id} AND kategori_nilai.kategori_nilai_id=2 ORDER BY nilai.tanggal_penilaian ASC")->getResultArray();
+                return $this->db->query("SELECT * FROM nilai_detail INNER JOIN nilai ON nilai_detail.nilai_id = nilai.nilai_id INNER JOIN jadwal ON nilai.jadwal_id = jadwal.jadwal_id INNER JOIN level ON jadwal.level_id = level.level_id INNER JOIN kategori_nilai ON nilai.kategori_nilai_id = kategori_nilai.kategori_nilai_id INNER JOIN pengguna ON nilai.user_id = pengguna.user_id WHERE nilai_detail.user_id={$user_id} AND kategori_nilai.kategori_nilai_id=2 ORDER BY nilai.tanggal_penilaian ASC")->getResultArray();
             }
         }
     }
@@ -53,7 +53,7 @@ class NilaiModel extends Model
     // Mendapatkan Data Nilai Visualisasi Rank
     public function getNilaiRank($nilai_id)
     {
-        return $this->db->query("SELECT * FROM nilai INNER JOIN nilai_detail ON nilai.nilai_id = nilai_detail.nilai_id INNER JOIN kategori_nilai ON nilai.kategori_nilai_id = kategori_nilai.kategori_nilai_id INNER JOIN user ON nilai_detail.user_id = user.user_id INNER JOIN anak_didik ON user.user_id = anak_didik.user_id INNER JOIN skor ON nilai_detail.skor_id = skor.skor_id WHERE nilai.nilai_id={$nilai_id} ORDER BY nilai_detail.skor_id DESC")->getResultArray();
+        return $this->db->query("SELECT * FROM nilai INNER JOIN nilai_detail ON nilai.nilai_id = nilai_detail.nilai_id INNER JOIN kategori_nilai ON nilai.kategori_nilai_id = kategori_nilai.kategori_nilai_id INNER JOIN pengguna ON nilai_detail.user_id = pengguna.user_id INNER JOIN anak_didik ON pengguna.user_id = anak_didik.user_id INNER JOIN skor ON nilai_detail.skor_id = skor.skor_id WHERE nilai.nilai_id={$nilai_id} ORDER BY nilai_detail.skor_id DESC")->getResultArray();
     }
 
     // Mendapatkan data nilai rapot
@@ -71,19 +71,19 @@ class NilaiModel extends Model
     // Mendapatkan Nilai Tertentu
     public function getSpesificNilai($nilai_id, $column = 'nilai_id')
     {
-        return $this->db->query("SELECT *, user.nama as nama_motivator FROM nilai INNER JOIN kategori_nilai ON nilai.kategori_nilai_id = kategori_nilai.kategori_nilai_id INNER JOIN jadwal ON nilai.jadwal_id = jadwal.jadwal_id INNER JOIN hari ON jadwal.hari_id = hari.hari_id INNER JOIN level ON jadwal.level_id = level.level_id INNER JOIN user ON nilai.user_id = user.user_id WHERE nilai.{$column}={$nilai_id}")->getFirstRow();
+        return $this->db->query("SELECT *, user.nama as nama_motivator FROM nilai INNER JOIN kategori_nilai ON nilai.kategori_nilai_id = kategori_nilai.kategori_nilai_id INNER JOIN jadwal ON nilai.jadwal_id = jadwal.jadwal_id INNER JOIN hari ON jadwal.hari_id = hari.hari_id INNER JOIN level ON jadwal.level_id = level.level_id INNER JOIN pengguna ON nilai.user_id = pengguna.user_id WHERE nilai.{$column}={$nilai_id}")->getFirstRow();
     }
 
     // Mendapatkan Nilai Detail Tertentu
     public function getSpesificNilaiDetail($nilai_id)
     {
-        return $this->db->query("SELECT * FROM nilai_detail INNER JOIN user ON nilai_detail.user_id = user.user_id INNER JOIN anak_didik ON user.user_id = anak_didik.user_id WHERE nilai_id={$nilai_id}")->getResultArray();
+        return $this->db->query("SELECT * FROM nilai_detail INNER JOIN pengguna ON nilai_detail.user_id = pengguna.user_id INNER JOIN anak_didik ON pengguna.user_id = anak_didik.user_id WHERE nilai_id={$nilai_id}")->getResultArray();
     }
 
     // Mendapatkan Nilai Detail Tertentu Berdasarkan User Id
     public function getSpesificNilaiDetailByUserId($user_id, $nilai_id)
     {
-        return $this->db->query("SELECT * FROM nilai_detail INNER JOIN user ON nilai_detail.user_id = user.user_id INNER JOIN anak_didik ON user.user_id = anak_didik.user_id WHERE nilai_detail.user_id='{$user_id}' AND nilai_detail.nilai_id='{$nilai_id}'")->getFirstRow();
+        return $this->db->query("SELECT * FROM nilai_detail INNER JOIN pengguna ON nilai_detail.user_id = pengguna.user_id INNER JOIN anak_didik ON pengguna.user_id = anak_didik.user_id WHERE nilai_detail.user_id='{$user_id}' AND nilai_detail.nilai_id='{$nilai_id}'")->getFirstRow();
     }
 
     // Mendapatkan data kategori penilaian 

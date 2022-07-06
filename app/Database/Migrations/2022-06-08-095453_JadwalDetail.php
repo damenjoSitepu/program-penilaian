@@ -19,7 +19,7 @@ class JadwalDetail extends Migration
             ]
         ]);
 
-        $this->forge->addForeignKey('user_id', 'user', 'user_id');
+        $this->forge->addForeignKey('user_id', 'pengguna', 'user_id');
         $this->forge->createTable('jadwal_detail');
     }
 

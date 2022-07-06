@@ -9,19 +9,19 @@ class MotivatorModel extends Model
     // Mendapatkan seluruh data motivator
     public function getMotivator()
     {
-        return $this->db->query("SELECT * FROM motivator INNER JOIN user ON motivator.user_id = user.user_id ORDER BY motivator.user_id DESC")->getResultArray();
+        return $this->db->query("SELECT * FROM motivator INNER JOIN pengguna ON motivator.user_id = pengguna.user_id ORDER BY motivator.user_id DESC")->getResultArray();
     }
 
     // Mendapatkan seluruh data motivator berdasarkan pencarian
     public function searchMotivator($nama_motivator)
     {
-        return $this->db->query("SELECT * FROM motivator INNER JOIN user ON motivator.user_id = user.user_id WHERE user.nama LIKE '%{$nama_motivator}%' ORDER BY motivator.user_id DESC")->getResultArray();
+        return $this->db->query("SELECT * FROM motivator INNER JOIN pengguna ON motivator.user_id = pengguna.user_id WHERE pengguna.nama LIKE '%{$nama_motivator}%' ORDER BY motivator.user_id DESC")->getResultArray();
     }
 
     // Mendapatkan data motivator berdasarkan kolom
     public function getSpesificMotivator($motivator_id = 1)
     {
-        return $this->db->query("SELECT * FROM motivator INNER JOIN user ON motivator.user_id = user.user_id WHERE motivator.user_id={$motivator_id}")->getFirstRow();
+        return $this->db->query("SELECT * FROM motivator INNER JOIN pengguna ON motivator.user_id = pengguna.user_id WHERE motivator.user_id={$motivator_id}")->getFirstRow();
     }
 
     // Tambahkan Data Tambahan Motivator 
@@ -60,6 +60,6 @@ class MotivatorModel extends Model
         // Hapus Motivator
         $this->db->query("DELETE FROM motivator WHERE motivator.user_id='{$motivator_id}'");
         // Hapus User
-        $this->db->query("DELETE FROM user WHERE user.user_id='{$motivator_id}'");
+        $this->db->query("DELETE FROM pengguna WHERE pengguna.user_id='{$motivator_id}'");
     }
 }

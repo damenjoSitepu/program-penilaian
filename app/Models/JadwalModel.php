@@ -39,7 +39,7 @@ class JadwalModel extends Model
     // Mendapatkan Jadwal Detail Tertentu Berdasarkan User Id
     public function getSpesificJadwalDetailByUserId($user_id, $jadwal_id)
     {
-        return $this->db->query("SELECT * FROM jadwal_detail INNER JOIN user ON jadwal_detail.user_id = user.user_id INNER JOIN anak_didik ON user.user_id = anak_didik.user_id WHERE jadwal_detail.user_id='{$user_id}' AND jadwal_detail.jadwal_id='{$jadwal_id}'")->getFirstRow();
+        return $this->db->query("SELECT * FROM jadwal_detail INNER JOIN pengguna ON jadwal_detail.user_id = pengguna.user_id INNER JOIN anak_didik ON pengguna.user_id = anak_didik.user_id WHERE jadwal_detail.user_id='{$user_id}' AND jadwal_detail.jadwal_id='{$jadwal_id}'")->getFirstRow();
     }
 
     // Menampilkan jadwal berdasarkan 

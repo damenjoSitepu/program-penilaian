@@ -39,7 +39,7 @@ class Motivator extends Migration
                 'type'       => 'TEXT'
             ]
         ]);
-        $this->forge->addForeignKey('user_id', 'user', 'user_id');
+        $this->forge->addForeignKey('user_id', 'pengguna', 'user_id');
         $this->forge->createTable('motivator');
     }
 

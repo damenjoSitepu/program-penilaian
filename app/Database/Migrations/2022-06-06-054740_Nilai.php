@@ -38,7 +38,7 @@ class Nilai extends Migration
         $this->forge->addKey('nilai_id', true);
         $this->forge->addForeignKey('jadwal_id', 'jadwal', 'jadwal_id');
         $this->forge->addForeignKey('kategori_nilai_id', 'kategori_nilai', 'kategori_nilai_id');
-        $this->forge->addForeignKey('user_id', 'user', 'user_id');
+        $this->forge->addForeignKey('user_id', 'pengguna', 'user_id');
         $this->forge->createTable('nilai');
     }
 
