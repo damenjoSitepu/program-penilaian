@@ -39,10 +39,10 @@ class UserModel extends Model
 
         if ($type === 'motivator') {
             $nama = $data['nama'];
-            return $this->db->query("INSERT INTO pengguna(user_id,nama,username,password,kelas) VALUES('','{$nama}','{$username}','{$password}','2')");
+            return $this->db->query("INSERT INTO pengguna(nama,username,password,kelas) VALUES('{$nama}','{$username}','{$password}','2')");
         } else {
             $nama = $data['nama_wali'];
-            return $this->db->query("INSERT INTO pengguna(user_id,nama,username,password,kelas) VALUES('','{$nama}','{$username}','{$password}','3')");
+            return $this->db->query("INSERT INTO pengguna(nama,username,password,kelas) VALUES('{$nama}','{$username}','{$password}','3')");
         }
     }
 
