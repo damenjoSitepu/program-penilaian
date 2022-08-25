@@ -149,7 +149,9 @@
             <!-- manipulasi gambar -->
             <div class="lefts">
                 <?php  ?>
-                <img class="img-preview1" src="<?= base_url('assets/sertifikat_img/' . $getSpesificAnakDidik->photo1); ?>" alt="">
+                <!-- <img class="img-preview1" src="<?= base_url('assets/sertifikat_img/' . $getSpesificAnakDidik->photo1); ?>" alt=""> -->
+                <!-- https://res.cloudinary.com/ddvcelpwp/image/upload/v1657081148/1657081142_f05842328ddd62db3616.png.png -->
+                <img class="img-preview1" src="https://res.cloudinary.com/ddvcelpwp/image/upload/v1657081148/<?= $getSpesificAnakDidik->photo1; ?>" alt="">
 
                 <div class="inputs">
                     <label for="editsertifikat1">Tambahkan Sertifikat Lv.1</label>

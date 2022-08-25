@@ -3,6 +3,8 @@
 namespace App\Controllers\AnakDidik;
 
 use App\Controllers\BaseController;
+// use Cloudinary\Api\Upload\UploadApi;
+use Cloudinary\Cloudinary;
 
 class AnakDidikProcess extends BaseController
 {
@@ -129,25 +131,36 @@ class AnakDidikProcess extends BaseController
     // Proses Menyunting Sertifikat 1
     public function suntingSertifikat1()
     {
+
         // id
         $anakdidik_id = $this->request->getVar('anakdidik_id');
         // PHOTO SESSION
         $old_photo = $this->request->getVar('old_photo');
         // Catch image file
         $imageFile = $this->request->getFile('photo');
+        // dd($imageFile->getName());
         // Cek apakah ada gambar yang diupload
+
         if ($imageFile->isValid()) {
             // Change default file name to random hash file name. 
             $newFileHash = $imageFile->getRandomName();
+            $separateExt = explode('.', $newFileHash);
+
 
             // Delete old image
-            if ($old_photo !== 'default.png')
-                unlink('assets/sertifikat_img/' . $old_photo);
+            // if ($old_photo !== 'default.png')
+            //     unlink('assets/sertifikat_img/' . $old_photo);
             // Move image to default folder immediately
-            $imageFile->move('assets/sertifikat_img', $newFileHash);
+            // $imageFile->move('assets/sertifikat_img', $newFileHash);
+
+            $cloudinary = new Cloudinary();
+
+            $cloudinary->uploadApi()->upload($imageFile->getTempName(), array("public_id" => $separateExt[0]));
         } else {
             $newFileHash = $old_photo;
         }
+
+
 
         // Simpan data sertifikat
         $dataSertifikat = [

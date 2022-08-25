@@ -71,7 +71,7 @@ class NilaiModel extends Model
     // Mendapatkan Nilai Tertentu
     public function getSpesificNilai($nilai_id, $column = 'nilai_id')
     {
-        return $this->db->query("SELECT *, user.nama as nama_motivator FROM nilai INNER JOIN kategori_nilai ON nilai.kategori_nilai_id = kategori_nilai.kategori_nilai_id INNER JOIN jadwal ON nilai.jadwal_id = jadwal.jadwal_id INNER JOIN hari ON jadwal.hari_id = hari.hari_id INNER JOIN level ON jadwal.level_id = level.level_id INNER JOIN pengguna ON nilai.user_id = pengguna.user_id WHERE nilai.{$column}={$nilai_id}")->getFirstRow();
+        return $this->db->query("SELECT *, pengguna.nama as nama_motivator FROM nilai INNER JOIN kategori_nilai ON nilai.kategori_nilai_id = kategori_nilai.kategori_nilai_id INNER JOIN jadwal ON nilai.jadwal_id = jadwal.jadwal_id INNER JOIN hari ON jadwal.hari_id = hari.hari_id INNER JOIN level ON jadwal.level_id = level.level_id INNER JOIN pengguna ON nilai.user_id = pengguna.user_id WHERE nilai.{$column}={$nilai_id}")->getFirstRow();
     }
 
     // Mendapatkan Nilai Detail Tertentu

@@ -41,7 +41,7 @@
             <div class="end m-auto w-50">
                 <button type="submit" class="buttonbro d-block text-center text-light rounded w-100 border-0 fw-bold">Login</button>
 
-                <small class="text-secondary text-center d-block my-4">Web App Made By Intan &copy; 2022</small>
+                <small class="text-secondary text-center d-block my-4">Web App Made By Damenjo Sitepu &copy; 2022</small>
             </div>
         </form>
     </div>
